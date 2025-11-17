@@ -5,25 +5,24 @@ function Confetti() {
   const [pieces, setPieces] = useState([]);
 
   useEffect(() => {
-    const confettiPieces = Array.from({ length: 80 }, (_, i) => ({
+    const confettiPieces = Array.from({ length: 50 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 3,
-      duration: 4 + Math.random() * 4,
-      size: 6 + Math.random() * 8, // tamaño variable
-      shape: Math.floor(Math.random() * 3), // 0: cuadrado, 1: círculo, 2: rectángulo
+      duration: 5 + Math.random() * 3,
+      size: 8 + Math.random() * 6,
+      shape: Math.floor(Math.random() * 3),
       color: [
-        "#FFB6C1", // rosa claro
-        "#DDA0DD", // morado claro
-        "#FFE4E1", // rosa pálido
-        "#FFC0CB", // rosa
-        "#E6E6FA", // lavanda
-        "#FFD700", // dorado
-        "#FF69B4", // rosa fuerte
-        "#87CEEB", // azul cielo
+        "#FFB6C1",
+        "#DDA0DD",
+        "#FFE4E1",
+        "#FFC0CB",
+        "#E6E6FA",
+        "#FFD700",
+        "#FF69B4",
+        "#87CEEB",
       ][Math.floor(Math.random() * 8)],
       rotation: Math.random() * 360,
-      swing: (Math.random() - 0.5) * 100, // movimiento lateral
     }));
 
     setPieces(confettiPieces);
@@ -56,7 +55,6 @@ function Confetti() {
             transform: `rotate(${piece.rotation}deg)`,
             width: `${piece.size}px`,
             height: piece.shape === 2 ? `${piece.size * 1.5}px` : `${piece.size}px`,
-            '--swing': `${piece.swing}px`,
           }}
         />
       ))}

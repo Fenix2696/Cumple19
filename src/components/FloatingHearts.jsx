@@ -3,24 +3,30 @@ import { motion } from "framer-motion";
 
 export default function FloatingHearts({ active }) {
   if (!active) return null;
-  const hearts = Array.from({ length: 18 });
+  const hearts = Array.from({ length: 12 });
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
       {hearts.map((_, i) => (
         <motion.div
           key={i}
           style={{
             position: "absolute",
-            left: `${20 + Math.random() * 60}%`,
-            bottom: `${-10 - Math.random() * 10}%`,
-            fontSize: `${14 + Math.random() * 20}px`,
-            opacity: 0.95,
-            transform: `translateX(${(Math.random()-0.5)*40}px)`
+            left: `${15 + Math.random() * 70}%`,
+            bottom: "-5%",
+            fontSize: `${20 + Math.random() * 20}px`,
           }}
-          initial={{ y: 0, opacity: 0, scale: 0.6 }}
-          animate={{ y: -350 - Math.random() * 160, opacity: [0, 1, 1, 0], scale: [0.6, 1, 1, 0.8] }}
-          transition={{ duration: 2.6 + Math.random() * 1.2, delay: i * 0.08, ease: "easeOut" }}
+          initial={{ y: 0, opacity: 0, scale: 0.5 }}
+          animate={{ 
+            y: [-50, -300, -500], 
+            opacity: [0, 1, 0], 
+            scale: [0.5, 1.2, 0.8] 
+          }}
+          transition={{ 
+            duration: 2.5 + Math.random() * 1, 
+            delay: i * 0.15, 
+            ease: "easeOut" 
+          }}
         >
           <span style={{ color: "#ff8fc9" }}>❤️</span>
         </motion.div>

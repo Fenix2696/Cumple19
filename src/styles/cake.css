@@ -195,197 +195,6 @@
 }
 
 /* ================================================ */
-/*              TEXTURAS DE CREMA                   */
-/* ================================================ */
-
-.cream-texture {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-    radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
-  background-size: 50px 50px;
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-/* ================================================ */
-/*           GLASEADO CHORREANDO MEJORADO           */
-/* ================================================ */
-
-.icing-drip-improved {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background: transparent;
-  /* REMOVIDO: Ya no hay glaseado con piquitos */
-}
-
-/* ================================================ */
-/*              DECORACIONES - FLORES               */
-/* ================================================ */
-
-.cake-flowers {
-  position: absolute;
-  bottom: 15px;
-  left: 0;
-  width: 100%;
-  height: 40px;
-}
-
-.flower {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  animation: flowerRotate 6s linear infinite;
-}
-
-@keyframes flowerRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.petal {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(135deg, #FFB6D9, #FF9ECB);
-  border-radius: 50% 0 50% 0;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0 0;
-}
-
-.petal:nth-child(1) { transform: rotate(0deg) translateX(8px); }
-.petal:nth-child(2) { transform: rotate(72deg) translateX(8px); }
-.petal:nth-child(3) { transform: rotate(144deg) translateX(8px); }
-.petal:nth-child(4) { transform: rotate(216deg) translateX(8px); }
-.petal:nth-child(5) { transform: rotate(288deg) translateX(8px); }
-
-.flower-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  background: radial-gradient(circle, #FFD700, #FFC700);
-  border-radius: 50%;
-  box-shadow: 0 0 4px rgba(255, 215, 0, 0.6);
-}
-
-/* ================================================ */
-/*           DECORACIÓN ONDULADA                    */
-/* ================================================ */
-
-.wavy-decoration {
-  position: absolute;
-  bottom: 10px;
-  left: 5%;
-  width: 90%;
-  height: 15px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.4) 0px,
-    rgba(255, 255, 255, 0.6) 10px,
-    rgba(255, 255, 255, 0.4) 20px
-  );
-  border-radius: 10px;
-  box-shadow: inset 0 2px 4px rgba(200, 140, 200, 0.2);
-}
-
-/* ================================================ */
-/*               FRESAS DECORATIVAS                 */
-/* ================================================ */
-
-.strawberry-decoration {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  height: 30px;
-}
-
-.mini-strawberry {
-  position: absolute;
-  width: 20px;
-  height: 25px;
-  background: linear-gradient(135deg, #FF4757 0%, #D63447 100%);
-  border-radius: 50% 50% 45% 45%;
-  box-shadow: 0 3px 6px rgba(255, 70, 90, 0.4);
-}
-
-.mini-strawberry::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, #FFD89A 1px, transparent 1px);
-  background-size: 6px 6px;
-  background-position: 2px 3px, 5px 8px, 3px 13px;
-}
-
-.strawberry-leaf-mini {
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 8px;
-  background: linear-gradient(135deg, #4CAF50, #2E7D32);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-}
-
-/* ================================================ */
-/*               ROSA CENTRAL                       */
-/* ================================================ */
-
-.center-rose {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 35px;
-  height: 35px;
-  animation: roseBloom 4s ease-in-out infinite;
-}
-
-@keyframes roseBloom {
-  0%, 100% { transform: translateX(-50%) scale(1) rotate(0deg); }
-  50% { transform: translateX(-50%) scale(1.1) rotate(180deg); }
-}
-
-.rose-petal {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  background: linear-gradient(135deg, #FFB6D9 0%, #FF9ECB 100%);
-  border-radius: 50% 0;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0 0;
-  box-shadow: 0 2px 4px rgba(255, 105, 180, 0.3);
-}
-
-.rose-petal:nth-child(1) { transform: rotate(0deg) translateX(10px); }
-.rose-petal:nth-child(2) { transform: rotate(90deg) translateX(10px); }
-.rose-petal:nth-child(3) { transform: rotate(180deg) translateX(10px); }
-.rose-petal:nth-child(4) { transform: rotate(270deg) translateX(10px); }
-
-.rose-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle, #FF69B4, #FF1493);
-  border-radius: 50%;
-  box-shadow: 0 0 6px rgba(255, 20, 147, 0.5);
-}
-
-/* ================================================ */
 /*              VELAS MEJORADAS                     */
 /* ================================================ */
 
@@ -439,35 +248,6 @@
     inset 1px 0 2px rgba(255, 255, 255, 0.7);
 }
 
-.candle-wax-drip {
-  position: absolute;
-  top: 12px;
-  right: -1px;
-  width: 3px;
-  height: 15px;
-  background: linear-gradient(180deg, 
-    rgba(255, 245, 247, 0.9), 
-    rgba(255, 235, 241, 0.7)
-  );
-  border-radius: 0 2px 2px 0;
-  opacity: 0.7;
-}
-
-.candle-shine-improved {
-  position: absolute;
-  top: 8px;
-  left: 2px;
-  width: 2px;
-  height: 30px;
-  background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0.7) 0%, 
-    rgba(255, 255, 255, 0.3) 50%,
-    transparent 100%
-  );
-  border-radius: 2px;
-  filter: blur(0.5px);
-}
-
 .candle-wick {
   position: absolute;
   top: -4px;
@@ -508,36 +288,6 @@
   }
 }
 
-.flame-outer-glow {
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 220, 100, 0.8) 0%,
-    rgba(255, 180, 80, 0.5) 30%,
-    rgba(255, 120, 60, 0.2) 60%,
-    transparent 100%
-  );
-  border-radius: 50%;
-  filter: blur(5px);
-  animation: glowPulseImproved 0.8s ease-in-out infinite alternate;
-}
-
-@keyframes glowPulseImproved {
-  0% { 
-    opacity: 0.7; 
-    transform: translateX(-50%) scale(1); 
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateX(-50%) scale(1.2); 
-  }
-}
-
 .flame-improved {
   position: absolute;
   top: 6px;
@@ -556,352 +306,17 @@
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   box-shadow: 
     0 0 10px rgba(255, 200, 100, 0.8),
-    0 0 16px rgba(255, 150, 70, 0.5),
-    inset 0 -4px 8px rgba(255, 120, 60, 0.4);
+    0 0 16px rgba(255, 150, 70, 0.5);
   animation: flameDanceImproved 0.6s ease-in-out infinite;
 }
 
 @keyframes flameDanceImproved {
   0%, 100% { 
     transform: translateX(-50%) rotate(-3deg); 
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   }
   50% { 
     transform: translateX(-50%) rotate(3deg); 
-    border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
   }
-}
-
-.flame-core {
-  position: absolute;
-  top: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 9px;
-  height: 15px;
-  background: linear-gradient(180deg,
-    rgba(255, 255, 245, 1) 0%,
-    rgba(255, 250, 220, 1) 30%,
-    rgba(255, 240, 180, 0.95) 60%,
-    rgba(255, 220, 150, 0.8) 100%
-  );
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  filter: blur(0.8px);
-}
-
-.flame-highlight {
-  position: absolute;
-  top: 3px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 9px;
-  background: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 240, 0.7) 50%,
-    transparent 100%
-  );
-  border-radius: 50%;
-  filter: blur(1.5px);
-}
-
-.flame-base {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 12px;
-  height: 8px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 150, 70, 0.8) 0%,
-    rgba(255, 120, 60, 0.5) 50%,
-    transparent 100%
-  );
-  border-radius: 50%;
-  filter: blur(2.5px);
-}
-
-/* ================================================ */
-/*           EFECTO DE APAGADO                      */
-/* ================================================ */
-
-.extinguish-effect {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 25px;
-  height: 25px;
-  animation: extinguishFlash 0.4s ease-out forwards;
-}
-
-@keyframes extinguishFlash {
-  0% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translateX(-50%) scale(1.3);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.5);
-  }
-}
-
-.ember {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 100, 50, 1) 0%,
-    rgba(255, 150, 80, 0.8) 50%,
-    transparent 100%
-  );
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(255, 100, 50, 0.8);
-  animation: emberFade 0.5s ease-out forwards;
-}
-
-@keyframes emberFade {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.3);
-  }
-}
-
-/* ================================================ */
-/*              HUMO REALISTA MEJORADO              */
-/* ================================================ */
-
-.smoke-trail {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 100px;
-  pointer-events: none;
-}
-
-.smoke-puff {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at center,
-    rgba(140, 140, 140, 0.5) 0%,
-    rgba(160, 160, 160, 0.35) 30%,
-    rgba(180, 180, 180, 0.2) 60%,
-    rgba(200, 200, 200, 0.05) 100%
-  );
-  animation: smokeRiseRealistic 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  opacity: 0;
-}
-
-.puff-1 {
-  width: 20px;
-  height: 20px;
-  top: 0;
-}
-
-.puff-2 {
-  width: 25px;
-  height: 25px;
-  top: 0;
-}
-
-.puff-3 {
-  width: 30px;
-  height: 30px;
-  top: 0;
-}
-
-@keyframes smokeRiseRealistic {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(0) scale(0.5) rotate(0deg);
-    filter: blur(2px);
-  }
-  10% {
-    opacity: 0.8;
-  }
-  30% {
-    opacity: 0.7;
-    transform: translateX(calc(-50% + 5px)) translateY(-30px) scale(0.8) rotate(15deg);
-    filter: blur(3px);
-  }
-  60% {
-    opacity: 0.4;
-    transform: translateX(calc(-50% - 8px)) translateY(-60px) scale(1.2) rotate(-20deg);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(calc(-50% + 12px)) translateY(-100px) scale(1.8) rotate(30deg);
-    filter: blur(8px);
-  }
-}
-
-.smoke-wisp {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 15px;
-  height: 30px;
-  background: linear-gradient(
-    180deg,
-    rgba(150, 150, 150, 0.4) 0%,
-    rgba(170, 170, 170, 0.25) 50%,
-    transparent 100%
-  );
-  border-radius: 50%;
-  filter: blur(4px);
-  animation: wispRise 2s ease-out forwards;
-  opacity: 0;
-}
-
-.wisp-1 {
-  animation-duration: 1.8s;
-}
-
-.wisp-2 {
-  animation-duration: 2.2s;
-}
-
-@keyframes wispRise {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(0) scaleY(0.5);
-  }
-  20% {
-    opacity: 0.6;
-  }
-  70% {
-    opacity: 0.3;
-    transform: translateX(calc(-50% + 8px)) translateY(-70px) scaleY(1.5);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(calc(-50% - 10px)) translateY(-90px) scaleY(2);
-  }
-}
-
-/* ================================================ */
-/*              PARTÍCULAS DE LUZ                   */
-/* ================================================ */
-
-.light-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.light-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 230, 150, 1) 0%,
-    rgba(255, 200, 100, 0.8) 40%,
-    rgba(255, 180, 80, 0.4) 70%,
-    transparent 100%
-  );
-  border-radius: 50%;
-  box-shadow: 
-    0 0 8px rgba(255, 220, 100, 0.8),
-    0 0 12px rgba(255, 180, 80, 0.5);
-  animation: particleFloat 3s ease-in-out infinite;
-}
-
-@keyframes particleFloat {
-  0%, 100% {
-    opacity: 0.3;
-    transform: translateY(0) scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-15px) scale(1.2);
-  }
-}
-
-/* ================================================ */
-/*           CONFETI MEJORADO                       */
-/* ================================================ */
-
-.celebration-confetti {
-  position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 200%;
-  pointer-events: none;
-  z-index: 100;
-}
-
-.confetti-improved {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-  animation: confettiExplosion 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes confettiExplosion {
-  0% {
-    transform: 
-      translateX(0) 
-      translateY(0) 
-      rotate(0deg) 
-      scale(0);
-    opacity: 1;
-  }
-  10% {
-    opacity: 1;
-    transform: 
-      translateX(calc(cos(var(--angle)) * 30px)) 
-      translateY(calc(sin(var(--angle)) * 30px - 20px)) 
-      rotate(180deg) 
-      scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: 
-      translateX(calc(cos(var(--angle)) * var(--distance))) 
-      translateY(calc(sin(var(--angle)) * var(--distance) + 150px)) 
-      rotate(1080deg) 
-      scale(0.5);
-  }
-}
-
-.confetti-improved:nth-child(3n) {
-  border-radius: 50%;
-}
-
-.confetti-improved:nth-child(3n+1) {
-  width: 8px;
-  height: 12px;
-}
-
-.confetti-improved:nth-child(3n+2) {
-  width: 12px;
-  height: 8px;
-  border-radius: 4px;
 }
 
 /* ================================================ */
@@ -918,6 +333,7 @@
   animation-delay: 0.5s;
   opacity: 0;
   z-index: 50;
+  white-space: nowrap;
 }
 
 @keyframes wishAppear {
@@ -947,7 +363,6 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientShift 3s ease infinite;
-  text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
   filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.3));
 }
 
@@ -978,76 +393,63 @@
 }
 
 /* ================================================ */
-/*              ANIMACIONES ADICIONALES             */
-/* ================================================ */
-
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slide-down {
-  animation: slide-down 0.6s ease-out;
-}
-
-/* ================================================ */
 /*           RESPONSIVE ADJUSTMENTS                 */
 /* ================================================ */
 
 @media (max-width: 768px) {
   .cake-3d-container {
-    max-width: 350px;
-    height: 380px;
+    max-width: 400px;
+    height: 420px;
   }
 
   .cake-plate {
-    width: 320px;
+    width: 360px;
   }
 
   .cake-layer-1 {
-    width: 300px;
-    height: 100px;
+    width: 340px;
+    height: 110px;
+    bottom: 45px;
   }
 
   .cake-layer-2 {
-    width: 240px;
-    height: 85px;
-    bottom: 140px;
+    width: 270px;
+    height: 95px;
+    bottom: 150px;
   }
 
   .cake-layer-3 {
-    width: 180px;
-    height: 70px;
-    bottom: 220px;
+    width: 200px;
+    height: 80px;
+    bottom: 240px;
   }
 
   .candles-top {
-    bottom: 285px;
+    bottom: 315px;
   }
 
   .candles-middle {
-    bottom: 200px;
+    bottom: 230px;
   }
 
   .candles-bottom {
-    bottom: 120px;
+    bottom: 140px;
   }
 
   .candle-stick-improved {
-    width: 8px;
-    height: 50px;
+    width: 5px;
+    height: 35px;
   }
 
   .flame-container-improved {
-    top: -35px;
-    width: 25px;
-    height: 35px;
+    top: -30px;
+    width: 20px;
+    height: 30px;
+  }
+
+  .flame-improved {
+    width: 14px;
+    height: 20px;
   }
 
   .wish-granted {
@@ -1055,65 +457,83 @@
   }
 
   .wish-text {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .wish-stars {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 480px) {
   .cake-3d-container {
-    max-width: 280px;
-    height: 320px;
+    max-width: 300px;
+    height: 350px;
   }
 
   .cake-plate {
-    width: 260px;
+    width: 280px;
   }
 
   .cake-layer-1 {
-    width: 240px;
-    height: 80px;
+    width: 260px;
+    height: 90px;
+    bottom: 35px;
   }
 
   .cake-layer-2 {
-    width: 190px;
-    height: 70px;
-    bottom: 115px;
+    width: 210px;
+    height: 75px;
+    bottom: 120px;
   }
 
   .cake-layer-3 {
-    width: 140px;
-    height: 60px;
-    bottom: 180px;
+    width: 160px;
+    height: 65px;
+    bottom: 190px;
   }
 
   .candles-top {
-    bottom: 235px;
+    bottom: 250px;
   }
 
   .candles-middle {
-    bottom: 165px;
+    bottom: 180px;
   }
 
   .candles-bottom {
-    bottom: 100px;
+    bottom: 110px;
   }
 
   .candle-wrapper {
-    margin: 0 1px;
+    margin: 0 2px;
   }
 
   .candle-stick-improved {
-    width: 7px;
-    height: 45px;
+    width: 4px;
+    height: 30px;
   }
 
   .flame-container-improved {
-    width: 22px;
-    height: 30px;
-    top: -30px;
+    width: 18px;
+    height: 26px;
+    top: -28px;
+  }
+
+  .flame-improved {
+    width: 12px;
+    height: 18px;
+  }
+
+  .wish-granted {
+    top: -80px;
+  }
+
+  .wish-text {
+    font-size: 18px;
+  }
+
+  .wish-stars {
+    font-size: 16px;
   }
 }
