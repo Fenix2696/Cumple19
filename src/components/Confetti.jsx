@@ -5,7 +5,7 @@ function Confetti() {
   const [pieces, setPieces] = useState([]);
 
   useEffect(() => {
-    const confettiPieces = Array.from({ length: 50 }, (_, i) => ({
+    const confettiPieces = Array.from({ length: 60 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 3,
@@ -23,6 +23,7 @@ function Confetti() {
         "#87CEEB",
       ][Math.floor(Math.random() * 8)],
       rotation: Math.random() * 360,
+      swing: (Math.random() - 0.5) * 50,
     }));
 
     setPieces(confettiPieces);
@@ -55,6 +56,7 @@ function Confetti() {
             transform: `rotate(${piece.rotation}deg)`,
             width: `${piece.size}px`,
             height: piece.shape === 2 ? `${piece.size * 1.5}px` : `${piece.size}px`,
+            '--swing': `${piece.swing}px`,
           }}
         />
       ))}
