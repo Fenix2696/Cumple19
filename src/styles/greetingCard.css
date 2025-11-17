@@ -56,8 +56,8 @@
   align-items: center;
   min-height: 600px;
   transition: opacity 0.3s ease, transform 0.5s ease;
-}
   cursor: pointer;
+}
 
 .polaroid-container.closing {
   animation: polaroidToBook 0.7s ease-in-out forwards;
@@ -163,8 +163,8 @@
   left: 0;
   top: 0;
   height: 100%;
-}
   cursor: pointer;
+}
 
 /* Foto actual - encima */
 .book-page-current {
@@ -247,8 +247,8 @@
   box-shadow: 
     2px 0 10px rgba(0,0,0,0.1),
     inset 3px 0 8px rgba(0,0,0,0.05);
-}
   cursor: pointer;
+}
 
 /* Reverso blanco de la página que se voltea */
 .book-page-right::after {
@@ -441,58 +441,6 @@
   color: #B8B8B8;
 }
 
-/* ========== NAVEGACIÓN ========== */
-.navigation-controls {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.nav-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
-}
-
-.nav-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.nav-prev {
-  background: linear-gradient(135deg, #DDA0DD, #DA70D6);
-  color: white;
-}
-
-.nav-next {
-  background: linear-gradient(135deg, #FF69B4, #FF1493);
-  color: white;
-  margin-left: auto;
-}
-
-.nav-finish {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  color: white;
-  margin-left: auto;
-}
-
-.nav-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
-}
-
-.nav-arrow {
-  font-size: 1.25rem;
-}
-
 /* ========== INDICADOR DE PROGRESO ========== */
 .progress-indicator {
   display: flex;
@@ -517,34 +465,72 @@
   background: #DDA0DD;
 }
 
-/* ========== RESPONSIVE ========== */
+/* ========== RESPONSIVE - MÓVIL ========== */
 @media (max-width: 768px) {
+  .greeting-card-container {
+    padding: 1rem;
+  }
+
   .polaroid-card {
-    width: 380px;
-    height: 520px;
-    padding: 20px 20px 65px 20px;
+    width: 90%;
+    max-width: 350px;
+    padding: 20px 20px 60px 20px;
   }
 
   .polaroid-video {
-    height: 350px;
+    height: 320px;
   }
 
   .polaroid-script {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .book-container {
+    min-height: auto;
   }
 
   .book-opened {
-    width: 95%;
-    height: 550px;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    gap: 0;
   }
 
   .book-page-left,
   .book-page-right {
+    width: 100%;
     padding: 2rem 1.5rem;
+    border-radius: 12px;
+    position: relative;
+    left: 0 !important;
+    top: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    height: auto;
+  }
+
+  .book-page-left {
+    border-radius: 12px 12px 0 0;
+    margin-bottom: -1px;
+  }
+
+  .book-page-right {
+    border-radius: 0 0 12px 12px;
+    transform: none !important;
+  }
+
+  .book-page-right::after {
+    display: none;
+  }
+
+  .book-page-right.page-flipping-forward,
+  .book-page-right.page-flipping-backward {
+    animation: none !important;
   }
 
   .page-photo {
-    max-width: 250px;
+    max-width: 100%;
+    width: 300px;
   }
 
   .message-title,
@@ -552,38 +538,121 @@
     font-size: 1.5rem;
   }
 
+  .message-text {
+    font-size: 1rem;
+  }
+
   .final-title {
     font-size: 2rem;
+  }
+
+  .final-text {
+    font-size: 1rem;
+  }
+
+  .page-number {
+    bottom: 1rem;
+    right: 1.5rem;
+  }
+
+  .progress-indicator {
+    margin-top: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
+  .greeting-card-container {
+    padding: 0.5rem;
+  }
+
+  .birthday-decoration {
+    font-size: 1.5rem;
+  }
+
   .polaroid-card {
-    width: 320px;
-    padding: 18px 18px 55px 18px;
+    width: 95%;
+    max-width: 320px;
+    padding: 15px 15px 50px 15px;
   }
 
   .polaroid-video {
-    height: 300px;
+    height: 280px;
+  }
+
+  .polaroid-label {
+    font-size: 0.875rem;
+    letter-spacing: 6px;
+  }
+
+  .polaroid-script {
+    font-size: 1.5rem;
   }
 
   .book-opened {
-    height: auto;
-    min-height: 500px;
+    max-width: 100%;
   }
 
   .book-page-left,
   .book-page-right {
+    padding: 1.5rem 1rem;
+  }
+
+  .page-photo {
     width: 100%;
-    padding: 1.5rem;
+    max-width: 260px;
   }
 
-  .book-page-right {
-    position: relative;
-    left: 0;
+  .photo-caption {
+    font-size: 0.875rem;
   }
 
-  .nav-text {
-    display: none;
+  .message-icon,
+  .wishes-icon {
+    font-size: 2rem;
+  }
+
+  .message-title,
+  .wishes-title {
+    font-size: 1.3rem;
+  }
+
+  .message-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .wishes-list li {
+    font-size: 0.9rem;
+  }
+
+  .wish-bullet {
+    font-size: 1.1rem;
+  }
+
+  .final-title {
+    font-size: 1.8rem;
+  }
+
+  .final-text {
+    font-size: 0.95rem;
+  }
+
+  .final-signature {
+    font-size: 1.1rem;
+  }
+
+  .final-hearts {
+    font-size: 1.5rem;
+  }
+
+  .page-number {
+    font-size: 0.75rem;
+    bottom: 0.75rem;
+    right: 1rem;
+  }
+
+  .progress-dot {
+    width: 8px;
+    height: 8px;
   }
 }
