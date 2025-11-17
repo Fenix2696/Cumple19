@@ -26,23 +26,23 @@ function App() {
 
   const greetingCardPages = [
     { 
-      src: "/images/foto1.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto1.jpg`, 
       text: "Mi amor… gracias por otro año a tu lado 💗" 
     },
     { 
-      src: "/images/foto2.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto2.jpg`, 
       text: "Eres todo para mi 💕" 
     },
     { 
-      src: "/images/foto3.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto3.jpg`, 
       text: "Feliz cumpleaños, princesa 🎀" 
     },
     { 
-      src: "/images/foto4.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto4.jpg`, 
       text: "Nuestros mejores momentos ✨" 
     },
     { 
-      src: "/images/foto5.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto5.jpg`, 
       text: "Te amo siempre 💖" 
     },
   ];
@@ -50,32 +50,32 @@ function App() {
   const fullAlbumPages = [
     { 
       type: "image", 
-      src: "/images/foto1.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto1.jpg`, 
       text: "Mi amor… gracias por otro año a tu lado 💗" 
     },
     { 
       type: "image", 
-      src: "/images/foto2.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto2.jpg`, 
       text: "Eres todo para mi 💕" 
     },
     { 
       type: "video", 
-      src: "/videos/video1.mp4", 
+      src: `${process.env.PUBLIC_URL}/videos/video1.mp4`, 
       text: "Nuestro momento favorito ❤️" 
     },
     { 
       type: "image", 
-      src: "/images/foto3.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto3.jpg`, 
       text: "Feliz cumpleaños, princesa 🎀" 
     },
     { 
       type: "image", 
-      src: "/images/foto4.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto4.jpg`, 
       text: "Nuestros mejores momentos ✨" 
     },
     { 
       type: "image", 
-      src: "/images/foto5.jpg", 
+      src: `${process.env.PUBLIC_URL}/images/foto5.jpg`, 
       text: "Te amo siempre 💖" 
     },
   ];

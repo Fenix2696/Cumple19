@@ -3,11 +3,11 @@ import { Camera } from 'lucide-react';
 
 function PhotoGallery({ active, onClick, albumPages = [] }) {
   const media = [
-    { type: 'image', src: '/images/photo1.jpg', alt: 'Foto 1' },
-    { type: 'image', src: '/images/photo2.jpg', alt: 'Foto 2' },
-    { type: 'image', src: '/images/photo3.jpg', alt: 'Foto 3' },
-    { type: 'video', src: '/images/video1.mp4', alt: 'Video 1' },
-    { type: 'video', src: '/images/video2.mp4', alt: 'Video 2' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/photo1.jpg`, alt: 'Foto 1' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/photo2.jpg`, alt: 'Foto 2' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/photo3.jpg`, alt: 'Foto 3' },
+    { type: 'video', src: `${process.env.PUBLIC_URL}/images/video1.mp4`, alt: 'Video 1' },
+    { type: 'video', src: `${process.env.PUBLIC_URL}/images/video2.mp4`, alt: 'Video 2' },
   ];
 
   return (

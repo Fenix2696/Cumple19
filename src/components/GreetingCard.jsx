@@ -4,7 +4,7 @@ import '../styles/greetingCard.css';
 function GreetingCard({ onComplete, albumPages = [] }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
-  const [displayPage, setDisplayPage] = useState(0); // Página que se muestra visualmente
+  const [displayPage, setDisplayPage] = useState(0);
 
   const pages = [
     { type: 'cover' },
@@ -49,7 +49,6 @@ function GreetingCard({ onComplete, albumPages = [] }) {
     if (isFlipping) return;
     
     if (currentPage < pages.length - 1) {
-      // Si es la portada (página 0), cambiar CON animación
       if (currentPage === 0) {
         setIsFlipping('forward');
         setTimeout(() => {
@@ -60,16 +59,13 @@ function GreetingCard({ onComplete, albumPages = [] }) {
         return;
       }
       
-      // Para las demás páginas, usar animación normal
       setIsFlipping('forward');
       
-      // Cambiar contenido cuando la página está perpendicular
       setTimeout(() => {
         setDisplayPage(prev => prev + 1);
         setCurrentPage(prev => prev + 1);
       }, 350);
       
-      // Terminar animación
       setTimeout(() => {
         setIsFlipping(false);
       }, 700);
@@ -81,7 +77,6 @@ function GreetingCard({ onComplete, albumPages = [] }) {
   const handlePrev = () => {
     if (isFlipping || currentPage === 0) return;
     
-    // Si volvemos a la portada
     if (currentPage === 1) {
       setCurrentPage(0);
       setDisplayPage(0);
@@ -90,19 +85,16 @@ function GreetingCard({ onComplete, albumPages = [] }) {
     
     setIsFlipping('backward');
     
-    // Cambiar contenido cuando la página está perpendicular
     setTimeout(() => {
       setDisplayPage(prev => prev - 1);
       setCurrentPage(prev => prev - 1);
     }, 350);
     
-    // Terminar animación
     setTimeout(() => {
       setIsFlipping(false);
     }, 700);
   };
 
-  // PORTADA POLAROID
   if (currentPage === 0) {
     return (
       <div className="greeting-card-container">
@@ -122,7 +114,7 @@ function GreetingCard({ onComplete, albumPages = [] }) {
             <div className="polaroid-card">
               <div className="polaroid-video">
                 <video 
-                  src="/videos/video1.mp4"
+                  src={`${process.env.PUBLIC_URL}/videos/video1.mp4`}
                   autoPlay
                   loop
                   muted
@@ -146,12 +138,11 @@ function GreetingCard({ onComplete, albumPages = [] }) {
     );
   }
 
-  // LIBRO ABIERTO (Páginas 1+)
   const leftImageIndex = currentPage - 1;
   const nextLeftImageIndex = currentPage;
   
-  const leftImage = albumPages[leftImageIndex] || { src: '/images/foto1.jpg', text: 'Recuerdo especial' };
-  const nextLeftImage = albumPages[nextLeftImageIndex] || { src: '/images/foto2.jpg', text: 'Siguiente recuerdo' };
+  const leftImage = albumPages[leftImageIndex] || { src: `${process.env.PUBLIC_URL}/images/foto1.jpg`, text: 'Recuerdo especial' };
+  const nextLeftImage = albumPages[nextLeftImageIndex] || { src: `${process.env.PUBLIC_URL}/images/foto2.jpg`, text: 'Siguiente recuerdo' };
 
   return (
     <div className="greeting-card-container">
@@ -169,7 +160,6 @@ function GreetingCard({ onComplete, albumPages = [] }) {
       <div className="book-wrapper">
         <div className="book-container">
           <div className="book-opened">
-            {/* PÁGINA IZQUIERDA ACTUAL - Foto visible */}
             <div className="book-page-left book-page-current" onClick={handlePrev}>
               <div className="page-photo">
                 <img src={leftImage.src} alt="Memory" />
@@ -177,7 +167,6 @@ function GreetingCard({ onComplete, albumPages = [] }) {
               <p className="photo-caption">{leftImage.text}</p>
             </div>
 
-            {/* PÁGINA IZQUIERDA SIGUIENTE - Debajo, se revela al voltear */}
             <div className="book-page-left book-page-next" onClick={handlePrev}>
               <div className="page-photo">
                 <img src={nextLeftImage.src} alt="Next Memory" />
@@ -185,7 +174,6 @@ function GreetingCard({ onComplete, albumPages = [] }) {
               <p className="photo-caption">{nextLeftImage.text}</p>
             </div>
 
-            {/* PÁGINA DERECHA - Mensaje con animación */}
             <div className={`book-page-right ${isFlipping === 'forward' ? 'page-flipping-forward' : ''} ${isFlipping === 'backward' ? 'page-flipping-backward' : ''}`} onClick={handleNext}>
               {pages[displayPage].type === 'message' && (
                 <div className="message-content">
