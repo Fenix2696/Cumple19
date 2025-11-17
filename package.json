@@ -2,6 +2,7 @@
   "name": "cumpleanos",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/Fenix2696/Cumple19.git",
   "dependencies": {
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.263.1",
