@@ -1,0 +1,117 @@
+/* Fondo de acuarela suave */
+.watercolor-bg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 240, 245, 0.4) 0%,
+    rgba(252, 235, 245, 0.3) 40%,
+    transparent 70%);
+  animation: pulse-soft 6s ease-in-out infinite;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+/* Contenedor de flores cayendo */
+.falling-flowers {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Flores individuales cayendo */
+.flower {
+  position: absolute;
+  animation: fall linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    top: -10%;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+    transform: translateX(var(--sway, 50px)) rotate(360deg);
+  }
+}
+
+/* Flores estáticas decorativas */
+.static-flower {
+  position: fixed;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  animation: sway 4s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-3deg) scale(1);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.05);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .watercolor-bg {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .flower svg {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .static-flower svg {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .watercolor-bg {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .flower svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  .static-flower svg {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}

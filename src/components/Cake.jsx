@@ -214,7 +214,7 @@ function Cake({ onBlown }) {
                   animation: 'pulse 2s ease-in-out infinite',
                   textAlign: 'center'
                 }}>
-                  🎂 sopla tus velitas!! 🕯️
+                  🎂 Sopla tus velitas!! 🕯️
                 </p>
                 <p className="text-base md:text-lg text-center" style={{
                   fontFamily: '"Pacifico", "Comic Sans MS", cursive',

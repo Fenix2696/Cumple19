@@ -4,6 +4,7 @@ import FloatingHearts from "./components/FloatingHearts";
 import Album from "./components/Album";
 import Confetti from "./components/Confetti";
 import GreetingCard from "./components/GreetingCard";
+import FallingFlowers from "./components/FallingFlowers";
 import "./styles/animations.css";
 
 function App() {
@@ -96,6 +97,9 @@ function App() {
     <>
       {/* Confetti FUERA del contenedor principal - CRITICAL para móviles */}
       <Confetti />
+      
+      {/* Flores cayendo - Nuevo componente */}
+      <FallingFlowers />
       
       {/* Contenedor principal SIN overflow-hidden */}
       <div 
