@@ -27,7 +27,7 @@ function App() {
   const greetingCardPages = [
     { 
       src: `${process.env.PUBLIC_URL}/images/foto1.jpg`, 
-      text: "Mi amor… gracias por otro año a tu lado 💗" 
+      text: "Cada día a tu lado es un regalo 🎁" 
     },
     { 
       src: `${process.env.PUBLIC_URL}/images/foto2.jpg`, 
@@ -35,80 +35,98 @@ function App() {
     },
     { 
       src: `${process.env.PUBLIC_URL}/images/foto3.jpg`, 
-      text: "Feliz cumpleaños, princesa 🎀" 
+      text: "Que este día sea tan dulce y maravilloso como tú 🎀" 
     },
     { 
       src: `${process.env.PUBLIC_URL}/images/foto4.jpg`, 
-      text: "Nuestros mejores momentos ✨" 
+      text: "Para mi persona favorita en el mundo entero 🫶🏻🫶🏻" 
     },
     { 
       src: `${process.env.PUBLIC_URL}/images/foto5.jpg`, 
-      text: "Te amo siempre 💖" 
+      text: "Feliz cumpleaños a mi milagro cotidiano ✨✨ " 
     },
   ];
 
+  // Collage de 8 fotos (el mensaje "Happy Birthday" irá en el centro automáticamente)
   const fullAlbumPages = [
     { 
       type: "image", 
       src: `${process.env.PUBLIC_URL}/images/foto1.jpg`, 
-      text: "Mi amor… gracias por otro año a tu lado 💗" 
+      text: " Tu sonrisa ilumina mi mundo 💗" 
     },
     { 
       type: "image", 
       src: `${process.env.PUBLIC_URL}/images/foto2.jpg`, 
-      text: "Eres todo para mi 💕" 
-    },
-    { 
-      type: "video", 
-      src: `${process.env.PUBLIC_URL}/videos/video1.mp4`, 
-      text: "Nuestro momento favorito ❤️" 
+      text: "Gracias por llenar mi vida de amor y felicidad 💕" 
     },
     { 
       type: "image", 
       src: `${process.env.PUBLIC_URL}/images/foto3.jpg`, 
-      text: "Feliz cumpleaños, princesa 🎀" 
+      text: "Quiero seguir disfrutando de tus ocurrencias 👉🏻👈🏻" 
     },
     { 
       type: "image", 
       src: `${process.env.PUBLIC_URL}/images/foto4.jpg`, 
-      text: "Nuestros mejores momentos ✨" 
+      text: "Quiero verte siempre feliz✨" 
     },
+    // La posición 5 (centro) será ocupada por "Happy Birthday"
     { 
       type: "image", 
       src: `${process.env.PUBLIC_URL}/images/foto5.jpg`, 
-      text: "Te amo siempre 💖" 
+      text: "Amo tu forma de ser 💖" 
+    },
+    { 
+      type: "image", 
+      src: `${process.env.PUBLIC_URL}/images/foto6.jpg`, 
+      text: " Feliz cumpleaños!!! 🎂🎂" 
+    },
+    { 
+      type: "image", 
+      src: `${process.env.PUBLIC_URL}/images/foto7.jpg`, 
+      text: " Ya lo vi jefe!! 🚔🚨 " 
+    },
+    { 
+      type: "image", 
+      src: `${process.env.PUBLIC_URL}/images/foto8.jpg`, 
+      text: "Y nunca olvides a la niña que llevas dentro ❤️‍🩹❤️‍🩹" 
     },
   ];
 
   return (
-    <div className="min-h-screen relative bg-gradient-to-br from-pink-100 via-purple-50 to-orange-50 overflow-hidden">
+    <>
+      {/* Confetti FUERA del contenedor principal - CRITICAL para móviles */}
       <Confetti />
-      <FloatingHearts active={showHearts} />
+      
+      {/* Contenedor principal SIN overflow-hidden */}
+      <div 
+        className="min-h-screen relative bg-gradient-to-br from-pink-100 via-purple-50 to-orange-50"
+        style={{ overflow: 'visible', width: '100%' }}
+      >
+        <FloatingHearts active={showHearts} />
 
-      <div className="relative z-10 container mx-auto px-4 py-12 min-h-screen flex items-center justify-center">
-        {!showCard && !showAlbum && (
-          <div className="w-full">
-            <Cake onBlown={handleCakeBlown} />
-          </div>
-        )}
+        <div 
+          className="relative z-10"
+          style={{ overflow: 'visible', width: '100%', maxWidth: '100vw' }}
+        >
+          {!showCard && !showAlbum && (
+            <div className="w-full">
+              <Cake onBlown={handleCakeBlown} />
+            </div>
+          )}
 
-        {showCard && !showAlbum && (
-          <GreetingCard 
-            onComplete={handleCardComplete}
-            albumPages={greetingCardPages}
-          />
-        )}
+          {showCard && !showAlbum && (
+            <GreetingCard 
+              onComplete={handleCardComplete}
+              albumPages={greetingCardPages}
+            />
+          )}
 
-        {showAlbum && (
-          <div className="w-full max-w-4xl animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold text-center text-pink-500 mb-8">
-              Álbum de recuerdos 💖
-            </h1>
+          {showAlbum && (
             <Album pages={fullAlbumPages} />
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

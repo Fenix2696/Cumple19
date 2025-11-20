@@ -10,7 +10,7 @@ function GreetingCard({ onComplete, albumPages = [] }) {
     { type: 'cover' },
     {
       type: 'message',
-      title: 'Mi Amor',
+      title: 'Denisse:',
       text: 'Hoy es tu día especial y quiero que sepas lo mucho que significas para mí. Cada momento a tu lado es un regalo que atesoro en mi corazón.',
       decoration: '💕',
     },
@@ -122,8 +122,8 @@ function GreetingCard({ onComplete, albumPages = [] }) {
                 />
               </div>
               <div className="polaroid-text">
-                <p className="polaroid-label">TE AMO</p>
-                <p className="polaroid-script">Mi amor</p>
+                <p className="polaroid-label">Para mis ojitos de tapioca</p>
+                <p className="polaroid-script">Felices 19 ❣</p>
               </div>
             </div>
           </div>

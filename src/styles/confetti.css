@@ -3,8 +3,14 @@
     transform: translateY(-10vh) translateX(0) rotate(0deg);
     opacity: 1;
   }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
   100% {
-    transform: translateY(100vh) translateX(var(--swing, 0)) rotate(720deg);
+    transform: translateY(110vh) translateX(var(--swing, 0)) rotate(720deg);
     opacity: 0;
   }
 }
@@ -13,12 +19,15 @@
   animation-name: confettiFall;
   animation-timing-function: ease-in;
   animation-iteration-count: infinite;
+  will-change: transform, opacity;
 }
 
 .confetti-square,
 .confetti-circle,
 .confetti-rectangle {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .confetti-circle {
@@ -31,4 +40,23 @@
 
 .confetti-rectangle {
   border-radius: 1px;
+}
+
+/* Asegurar que el contenedor de confeti no sea cortado */
+.confetti-container {
+  pointer-events: none !important;
+  overflow: visible !important;
+}
+
+/* Optimización para móviles */
+@media (max-width: 768px) {
+  .animate-confetti-fall {
+    animation-duration: 4s !important;
+  }
+  
+  .confetti-square,
+  .confetti-circle,
+  .confetti-rectangle {
+    transform: scale(0.9);
+  }
 }

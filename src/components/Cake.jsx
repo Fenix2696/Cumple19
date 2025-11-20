@@ -18,16 +18,34 @@ function Cake({ onBlown }) {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4">
-      <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-4 md:p-8 shadow-2xl">
-        <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-6">
-          <span className="text-3xl md:text-5xl">🎂</span>
-          <h2 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-            ¡Tu Pastel Especial!
+    <div style={{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '100%',
+      maxWidth: '640px',
+      padding: '0 1rem'
+    }}>
+      <div className="p-3 md:p-6">
+        <div className="text-center mb-6 w-full flex justify-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-2 inline-block" style={{
+            fontFamily: '"Pacifico", "Comic Sans MS", cursive',
+            backgroundImage: 'linear-gradient(45deg, #ec4899, #a855f7, #ec4899)',
+            backgroundSize: '200% 200%',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            animation: 'gradient-shift 3s ease infinite',
+            textShadow: '0 0 30px rgba(236, 72, 153, 0.5)',
+            letterSpacing: '0.05em',
+            textAlign: 'center'
+          }}>
+          ¡FELIZ CUMPLEAÑOOS! 
           </h2>
         </div>
         
-        <div className="flex flex-col items-center py-4 md:py-8">
+        <div className="flex flex-col items-center justify-center">
           <div 
             className="cake-3d-container"
             onClick={handleBlow}
@@ -52,14 +70,15 @@ function Cake({ onBlown }) {
               <div className="cake-layer-side layer-3-side"></div>
             </div>
 
-            {/* VELAS SUPERIORES */}
+            {/* VELAS SUPERIORES - 5 velas */}
             <div className="candles-container candles-top">
               {[...Array(5)].map((_, i) => (
                 <div 
                   key={`top-${i}`} 
                   className="candle-wrapper"
                   style={{ 
-                    transform: `translateX(${(i - 2) * 38}px)`
+                    position: 'absolute',
+                    left: `${30 + i * 10}%`
                   }}
                 >
                   <div className="candle-stick-improved">
@@ -85,14 +104,15 @@ function Cake({ onBlown }) {
               ))}
             </div>
 
-            {/* VELAS MEDIAS */}
+            {/* VELAS MEDIAS - 7 velas */}
             <div className="candles-container candles-middle">
               {[...Array(7)].map((_, i) => (
                 <div 
                   key={`middle-${i}`} 
                   className="candle-wrapper"
                   style={{ 
-                    transform: `translateX(${(i - 3) * 42}px)`
+                    position: 'absolute',
+                    left: `${20 + i * 10}%`
                   }}
                 >
                   <div className="candle-stick-improved">
@@ -117,14 +137,15 @@ function Cake({ onBlown }) {
               ))}
             </div>
 
-            {/* VELAS INFERIORES */}
+            {/* VELAS INFERIORES - 7 velas */}
             <div className="candles-container candles-bottom">
               {[...Array(7)].map((_, i) => (
                 <div 
                   key={`bottom-${i}`} 
                   className="candle-wrapper"
                   style={{ 
-                    transform: `translateX(${(i - 3) * 50}px)`
+                    position: 'absolute',
+                    left: `${10 + i * 12}%`
                   }}
                 >
                   <div className="candle-stick-improved">
@@ -157,17 +178,56 @@ function Cake({ onBlown }) {
             )}
           </div>
 
-          <p className="text-center mt-4 md:mt-8 text-purple-600 font-bold text-base md:text-xl px-4">
+          <div className="mt-6 w-full flex flex-col items-center" style={{ position: 'relative', overflow: 'hidden' }}>
             {blown ? (
-              <span className="animate-bounce inline-block">
-                🎉 ¡Tu deseo fue escuchado! 💖✨
-              </span>
+              <div style={{ position: 'relative', zIndex: 10 }}>
+                <p className="text-2xl md:text-4xl font-bold mb-3 text-center animate-fade-in" style={{
+                  fontFamily: '"Fredoka One", "Arial Black", sans-serif',
+                  backgroundImage: 'linear-gradient(90deg, #ec4899, #a855f7, #ec4899)',
+                  backgroundSize: '200% 200%',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  animation: 'gradient-shift 3s ease infinite, bounce 1s ease-in-out infinite',
+                  textAlign: 'center'
+                }}>
+                  🎉 ¡Deseo Cumplido! 🎉
+                </p>
+                <p className="text-lg md:text-xl font-semibold text-center" style={{
+                  fontFamily: '"Quicksand", "Helvetica", sans-serif',
+                  color: '#a855f7',
+                  textShadow: '0 2px 4px rgba(168, 85, 247, 0.3)',
+                  animation: 'pulse 2s ease-in-out infinite',
+                  textAlign: 'center'
+                }}>
+                  
+                </p>
+              </div>
             ) : (
-              <span className="animate-pulse">
-                🎂 Haz clic en el pastel para soplar las velitas 🕯️
-              </span>
+              <div style={{ position: 'relative', zIndex: 10 }}>
+                <p className="text-xl md:text-2xl font-bold mb-2 text-center" style={{
+                  fontFamily: '"Quicksand", "Helvetica", sans-serif',
+                  backgroundImage: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  animation: 'pulse 2s ease-in-out infinite',
+                  textAlign: 'center'
+                }}>
+                  🎂 sopla tus velitas!! 🕯️
+                </p>
+                <p className="text-base md:text-lg text-center" style={{
+                  fontFamily: '"Pacifico", "Comic Sans MS", cursive',
+                  color: '#ec4899',
+                  textShadow: '0 2px 4px rgba(236, 72, 153, 0.3)',
+                  animation: 'float 3s ease-in-out infinite',
+                  textAlign: 'center'
+                }}>
+                  👆 Recuerda pedir un deseo 💭✨
+                </p>
+              </div>
             )}
-          </p>
+          </div>
         </div>
       </div>
     </div>

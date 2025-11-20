@@ -1,100 +1,187 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import "../styles/album.css";
 
 export default function Album({ pages = [] }) {
-  const [index, setIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState(0);
 
-  const next = () => {
-    if (index < pages.length - 1) setIndex(index + 1);
-  };
+  useEffect(() => {
+    setLoadedImages(0);
+    const timer = setInterval(() => {
+      setLoadedImages(prev => {
+        if (prev < 9) return prev + 1; // 8 fotos + 1 mensaje = 9 items
+        clearInterval(timer);
+        return prev;
+      });
+    }, 150);
 
-  const prev = () => {
-    if (index > 0) setIndex(index - 1);
-  };
-
-  const pageAnim = {
-    hidden: { opacity: 0, scale: 0.95, y: 20 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.4 },
-    },
-    exit: { opacity: 0, scale: 0.95, y: -20 },
-  };
+    return () => clearInterval(timer);
+  }, [pages.length]);
 
   if (!pages || pages.length === 0) {
     return (
-      <div className="relative bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl p-6 w-full max-w-2xl mx-auto text-center">
-        <p className="text-purple-500 text-lg">No hay páginas para mostrar</p>
+      <div className="collage-empty">
+        <p>No hay fotos para mostrar 📷</p>
       </div>
     );
   }
 
+  // Tomar solo las primeras 8 fotos para el collage
+  const displayPages = pages.slice(0, 8);
+
   return (
-    <div className="relative bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl p-6 w-full max-w-2xl mx-auto">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          variants={pageAnim}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="text-center"
-        >
-          <div className="rounded-2xl overflow-hidden shadow-md mb-4">
-            {pages[index].type === "image" ? (
-              <img
-                src={pages[index].src}
-                alt={pages[index].text || "Foto"}
-                className="w-full h-80 object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<div class="w-full h-80 bg-gradient-to-br from-pink-200 to-purple-200 flex items-center justify-center text-6xl">📷</div>';
-                }}
-              />
-            ) : (
-              <video
-                src={pages[index].src}
-                controls
-                className="w-full h-80 object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<div class="w-full h-80 bg-gradient-to-br from-purple-200 to-pink-200 flex items-center justify-center text-6xl">🎥</div>';
-                }}
-              />
-            )}
-          </div>
-
-          <p className="text-pink-600 text-lg font-medium">
-            {pages[index].text || ""}
-          </p>
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="flex justify-between items-center mt-6">
-        <button
-          onClick={prev}
-          disabled={index === 0}
-          className={`p-2 rounded-full bg-pink-200 text-pink-600 shadow-md transition 
-            ${index === 0 ? "opacity-40 cursor-default" : "hover:bg-pink-300"}`}
-        >
-          <ArrowLeft />
-        </button>
-
-        <p className="text-purple-500 font-semibold">
-          Página {index + 1} / {pages.length}
+    <div className="collage-container">
+      {/* Título del collage */}
+      <motion.div 
+        className="collage-header"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="collage-title">
+         🎉🎉 FELICES 19🎉🎉
+        </h1>
+        <p className="collage-subtitle">
+          ✨ Cada foto lleva un mensaje ✨
         </p>
+      </motion.div>
 
-        <button
-          onClick={next}
-          disabled={index === pages.length - 1}
-          className={`p-2 rounded-full bg-pink-200 text-pink-600 shadow-md transition 
-            ${index === pages.length - 1 ? "opacity-40 cursor-default" : "hover:bg-pink-300"}`}
-        >
-          <ArrowRight />
-        </button>
+      {/* Grid del collage - 3x3 con mensaje en el centro */}
+      <div className="collage-grid">
+        {displayPages.map((page, index) => {
+          // Insertar mensaje en la posición central (índice 4)
+          if (index === 4) {
+            return (
+              <React.Fragment key="center-message">
+                {/* Mensaje central */}
+                <motion.div
+                  className="collage-item loaded"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    duration: 0.6,
+                    delay: 4 * 0.15,
+                    ease: "easeOut"
+                  }}
+                >
+                  <div className="collage-center-message">
+                    <p className="center-message-text">Happy</p>
+                    <p className="center-message-text">Birthday</p>
+                    <span className="center-message-emoji">🎂</span>
+                  </div>
+                </motion.div>
+
+                {/* Continuar con la foto del índice 4 */}
+                <motion.div
+                  key={index}
+                  className={`collage-item ${index < loadedImages ? 'loaded' : ''}`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={index < loadedImages ? { 
+                    opacity: 1, 
+                    scale: 1 
+                  } : {}}
+                  transition={{ 
+                    duration: 0.6,
+                    delay: (index + 1) * 0.15,
+                    ease: "easeOut"
+                  }}
+                >
+                  <div className="collage-photo-wrapper">
+                    {page.type === "video" ? (
+                      <video
+                        src={page.src}
+                        className="collage-photo"
+                        controls
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.parentElement.innerHTML = '<div class="collage-placeholder">🎥</div>';
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={page.src}
+                        alt={page.text || `Foto ${index + 1}`}
+                        className="collage-photo"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.parentElement.innerHTML = '<div class="collage-placeholder">📷</div>';
+                        }}
+                      />
+                    )}
+                    
+                    {page.text && (
+                      <div className="collage-overlay">
+                        <p className="collage-text">{page.text}</p>
+                      </div>
+                    )}
+                    
+                    <div className="collage-frame"></div>
+                  </div>
+                </motion.div>
+              </React.Fragment>
+            );
+          }
+
+          return (
+            <motion.div
+              key={index}
+              className={`collage-item ${index < loadedImages ? 'loaded' : ''}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={index < loadedImages ? { 
+                opacity: 1, 
+                scale: 1 
+              } : {}}
+              transition={{ 
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: "easeOut"
+              }}
+            >
+              <div className="collage-photo-wrapper">
+                {page.type === "video" ? (
+                  <video
+                    src={page.src}
+                    className="collage-photo"
+                    controls
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<div class="collage-placeholder">🎥</div>';
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={page.src}
+                    alt={page.text || `Foto ${index + 1}`}
+                    className="collage-photo"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<div class="collage-placeholder">📷</div>';
+                    }}
+                  />
+                )}
+                
+                {page.text && (
+                  <div className="collage-overlay">
+                    <p className="collage-text">{page.text}</p>
+                  </div>
+                )}
+                
+                <div className="collage-frame"></div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Decoraciones flotantes */}
+      <div className="collage-decorations">
+        <span className="floating-heart heart-1">💕</span>
+        <span className="floating-heart heart-2">💖</span>
+        <span className="floating-heart heart-3">💗</span>
+        <span className="floating-heart heart-4">💝</span>
+        <span className="floating-star star-1">✨</span>
+        <span className="floating-star star-2">⭐</span>
+        <span className="floating-star star-3">🌟</span>
       </div>
     </div>
   );

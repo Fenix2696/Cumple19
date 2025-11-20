@@ -5,7 +5,8 @@ function Confetti() {
   const [pieces, setPieces] = useState([]);
 
   useEffect(() => {
-    const confettiPieces = Array.from({ length: 60 }, (_, i) => ({
+    // Aumentamos la cantidad de confeti para mejor efecto
+    const confettiPieces = Array.from({ length: 80 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 3,
@@ -23,7 +24,7 @@ function Confetti() {
         "#87CEEB",
       ][Math.floor(Math.random() * 8)],
       rotation: Math.random() * 360,
-      swing: (Math.random() - 0.5) * 50,
+      swing: (Math.random() - 0.5) * 100, // Mayor movimiento horizontal
     }));
 
     setPieces(confettiPieces);
@@ -43,13 +44,29 @@ function Confetti() {
   };
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div 
+      className="confetti-container"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        overflow: 'visible',
+        zIndex: 9999,
+      }}
+    >
       {pieces.map((piece) => (
         <div
           key={piece.id}
-          className={`absolute animate-confetti-fall ${getShapeClass(piece.shape)}`}
+          className={`animate-confetti-fall ${getShapeClass(piece.shape)}`}
           style={{
+            position: 'absolute',
             left: `${piece.left}%`,
+            top: '-20px',
             backgroundColor: piece.color,
             animationDelay: `${piece.delay}s`,
             animationDuration: `${piece.duration}s`,

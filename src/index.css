@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -10,5 +12,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  /* REMOVIDO: overflow-x: hidden; - esto cortaba el confeti */
+  /* En su lugar, permitimos overflow visible para el confeti */
+  overflow: visible;
 }
+
+/* Asegurar que el root también permita overflow */
+#root {
+  overflow: visible;
+  min-height: 100vh;
+}
+
+/* Si necesitas evitar scroll horizontal solo en contenido específico,
+   aplica overflow-x: hidden SOLO a esos contenedores específicos,
+   NO al body o #root */
