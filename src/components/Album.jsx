@@ -41,9 +41,7 @@ export default function Album({ pages = [] }) {
         <h1 className="collage-title">
          🎉🎉 FELICES 19🎉🎉
         </h1>
-        <p className="collage-subtitle">
-          ✨ Cada foto lleva un mensaje ✨
-        </p>
+       
       </motion.div>
 
       {/* Grid del collage - 3x3 con mensaje en el centro */}

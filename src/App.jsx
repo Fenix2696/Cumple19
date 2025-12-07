@@ -5,12 +5,14 @@ import Album from "./components/Album";
 import Confetti from "./components/Confetti";
 import GreetingCard from "./components/GreetingCard";
 import FallingFlowers from "./components/FallingFlowers";
+import HeartAlbum from "./components/HeartAlbum";
 import "./styles/animations.css";
 
 function App() {
   const [showCard, setShowCard] = useState(false);
   const [showHearts, setShowHearts] = useState(false);
   const [showAlbum, setShowAlbum] = useState(false);
+  const [showHeartAlbum, setShowHeartAlbum] = useState(false);
 
   const handleCakeBlown = () => {
     setShowHearts(true);
@@ -112,21 +114,119 @@ function App() {
           className="relative z-10"
           style={{ overflow: 'visible', width: '100%', maxWidth: '100vw' }}
         >
-          {!showCard && !showAlbum && (
+          {!showCard && !showAlbum && !showHeartAlbum && (
             <div className="w-full">
               <Cake onBlown={handleCakeBlown} />
             </div>
           )}
 
-          {showCard && !showAlbum && (
+          {showCard && !showAlbum && !showHeartAlbum && (
             <GreetingCard 
               onComplete={handleCardComplete}
               albumPages={greetingCardPages}
             />
           )}
 
-          {showAlbum && (
-            <Album pages={fullAlbumPages} />
+          {showAlbum && !showHeartAlbum && (
+            <div className="w-full">
+              <Album pages={fullAlbumPages} />
+              
+              {/* Botón mejorado para ver el álbum de corazón */}
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                marginTop: '3rem', 
+                marginBottom: '2rem' 
+              }}>
+                <button
+                  onClick={() => setShowHeartAlbum(true)}
+                  style={{
+                    position: 'relative',
+                    padding: '1.25rem 2.5rem',
+                    fontSize: '1.25rem',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    background: 'linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #a855f7 100%)',
+                    border: 'none',
+                    borderRadius: '2rem',
+                    boxShadow: '0 15px 40px rgba(236, 72, 153, 0.5), 0 5px 20px rgba(168, 85, 247, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    overflow: 'visible',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)';
+                    e.currentTarget.style.boxShadow = '0 20px 50px rgba(236, 72, 153, 0.6), 0 10px 30px rgba(168, 85, 247, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 15px 40px rgba(236, 72, 153, 0.5), 0 5px 20px rgba(168, 85, 247, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
+                  }}
+                >
+                  <span style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '0.75rem',
+                    letterSpacing: '0.05em'
+                  }}>
+                    <span style={{ fontSize: '1.5rem' }}>✨</span>
+                    <span>💕 Ver Álbum Especial 💕</span>
+                    <span style={{ fontSize: '1.5rem' }}>✨</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {showHeartAlbum && (
+            <div className="w-full">
+              {/* Botón mejorado para volver */}
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                marginBottom: '2rem' 
+              }}>
+                <button
+                  onClick={() => setShowHeartAlbum(false)}
+                  style={{
+                    position: 'relative',
+                    padding: '1rem 2rem',
+                    fontSize: '1.125rem',
+                    fontWeight: '600',
+                    color: '#ec4899',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    backdropFilter: 'blur(10px)',
+                    border: '3px solid',
+                    borderImage: 'linear-gradient(135deg, #ec4899, #a855f7) 1',
+                    borderRadius: '1rem',
+                    boxShadow: '0 8px 25px rgba(236, 72, 153, 0.3)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05) translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 12px 35px rgba(236, 72, 153, 0.4)';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(236, 72, 153, 0.3)';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)';
+                  }}
+                >
+                  <span style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '0.5rem' 
+                  }}>
+                    <span style={{ fontSize: '1.5rem' }}>←</span>
+                    <span>Volver al álbum</span>
+                  </span>
+                </button>
+              </div>
+              
+              <HeartAlbum />
+            </div>
           )}
         </div>
       </div>

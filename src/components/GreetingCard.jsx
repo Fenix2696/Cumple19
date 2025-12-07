@@ -39,7 +39,7 @@ function GreetingCard({ onComplete, albumPages = [] }) {
     },
     {
       type: 'final',
-      title: 'Te Amo',
+      title: 'Te Amooooo 💖',
       text: '¡Felices 19 años, mi amor! Que este nuevo año esté lleno de momentos inolvidables, risas y amor.',
       signature: 'Con todo mi amor 💖',
     }
