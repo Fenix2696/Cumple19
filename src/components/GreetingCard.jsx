@@ -28,7 +28,7 @@ function GreetingCard({ onComplete, albumPages = [] }) {
     },
     {
       type: 'wishes',
-      title: 'Mis Deseos Para Ti',
+      title: 'Mis Deseos Para Ti Corazon',
       wishes: [
         'Que todos tus sueños se hagan realidad',
         'Que la felicidad te acompañe siempre',
