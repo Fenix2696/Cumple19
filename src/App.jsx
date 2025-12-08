@@ -180,51 +180,6 @@ function App() {
 
           {showHeartAlbum && (
             <div className="w-full">
-              {/* Botón mejorado para volver */}
-              <div style={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
-                marginBottom: '2rem' 
-              }}>
-                <button
-                  onClick={() => setShowHeartAlbum(false)}
-                  style={{
-                    position: 'relative',
-                    padding: '1rem 2rem',
-                    fontSize: '1.125rem',
-                    fontWeight: '600',
-                    color: '#ec4899',
-                    background: 'rgba(255, 255, 255, 0.9)',
-                    backdropFilter: 'blur(10px)',
-                    border: '3px solid',
-                    borderImage: 'linear-gradient(135deg, #ec4899, #a855f7) 1',
-                    borderRadius: '1rem',
-                    boxShadow: '0 8px 25px rgba(236, 72, 153, 0.3)',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.05) translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 12px 35px rgba(236, 72, 153, 0.4)';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(236, 72, 153, 0.3)';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)';
-                  }}
-                >
-                  <span style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem' 
-                  }}>
-                    <span style={{ fontSize: '1.5rem' }}>←</span>
-                    <span>Volver al álbum</span>
-                  </span>
-                </button>
-              </div>
-              
               <HeartAlbum />
             </div>
           )}

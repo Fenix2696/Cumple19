@@ -13,12 +13,6 @@ export default function HeartAlbum() {
   }));
 
   // Layout PERFECTO para 72 fotos
-  // Este layout está calculado específicamente para:
-  // ✔ 17 columnas (como en tu CSS)
-  // ✔ 10 filas
-  // ✔ Forma totalmente simétrica
-  // ✔ Ubicación correcta del texto "love"
-  // ✔ 72 fotos exactas (ni una más, ni una menos)
   const heartLayout = [
     // FILA 1 – 8 fotos
     { row: 1, positions: [4,5,6,7, 11,12,13,14] }, // 8
@@ -44,13 +38,13 @@ export default function HeartAlbum() {
     // FILA 8 – 4 fotos
     { row: 8, positions: [7,8,9,10] }, // 4
 
-    // FILA 9 – 2 fotos (penúltima de la punta)
+    // FILA 9 – 2 fotos
     { row: 9, positions: [8,9] }, // 2
 
-    // FILA 10 – 1 foto (punta final del corazón)
+    // FILA 10 – 1 foto
     { row: 10, positions: [8] }, // 1
 
-    // TOTAL = 8 + 10 + 12 + 12 + 10 + 8 + 6 + 4 + 2 + 1 = 72 fotos exactas
+    // TOTAL = 72 fotos exactas
   ];
 
   // Mapear fotos a posiciones del corazón
@@ -155,14 +149,64 @@ export default function HeartAlbum() {
         </motion.div>
       )}
 
-      <motion.p 
+      {/* Tarjeta de cumpleaños */}
+      <motion.div 
         className="heart-album-footer"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
       >
-        {photos.length} momentos inolvidables juntas ❤️
-      </motion.p>
+        <div className="birthday-card">
+          <div className="card-decoration-top">
+            <span>✨</span>
+            <span>💕</span>
+            <span>🎂</span>
+            <span>💕</span>
+            <span>✨</span>
+          </div>
+          
+          <div className="card-header">
+            <h2 className="card-title">Feliz cumpleaños, mi amor!</h2>
+            <div className="card-subtitle">🥳💗</div>
+          </div>
+          
+          <div className="card-body">
+            <p className="card-paragraph">
+              Neta no sé qué haría sin ti; gracias por las risas, los drama-chats de madrugada, 
+              los chismes premium y por estar siempre cuando lo necesito.
+            </p>
+            
+            <p className="card-paragraph">
+              Eres de esas personas que hacen la vida más ligera y más divertida.
+            </p>
+            
+            <p className="card-paragraph">
+              Hoy te toca disfrutar, reírte muchísimo y sentirte la reina del día.
+            </p>
+            
+            <p className="card-paragraph card-final">
+              Ojalá este año te traiga cosas geniales, gente bonita y mil momentos que te hagan sonreír.
+            </p>
+          </div>
+          
+          <div className="card-footer">
+            <p className="card-signature"></p>
+            <div className="card-hearts">
+              <span>💖</span>
+              <span>💝</span>
+              <span>💗</span>
+              <span>💕</span>
+              <span>❤️</span>
+            </div>
+          </div>
+          
+          <div className="card-decoration-bottom">
+            <span>🌸</span>
+            <span>🎀</span>
+            <span>🌸</span>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
